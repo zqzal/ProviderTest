@@ -79,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button deleteData = findViewById(R.id.delete_data);
+        final Button deleteData = findViewById(R.id.delete_data);
         deleteData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //删除数据
                 Uri uri = Uri.parse("content://com.example.databasetest.provider/book/" + newId);
-                getContentResolver().delete(uri,null,null);
+                int deleteRow = getContentResolver().delete(uri,null,null);
+                Log.d(TAG, "删除了第" + deleteRow + "行");
             }
         });
 
